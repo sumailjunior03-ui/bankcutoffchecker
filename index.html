@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Bank Cutoff Time Checker (US)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Check whether a bank payment processes today or next business day based on cutoff times and US federal holidays.">
+
+  <!-- AdSense (inactive by default; required for review) -->
+  <script async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header>
+  <h1>Bank Cutoff Time Checker</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Will your payment process today?</h2>
+  <p>Select a bank, transfer type, and submission time to see if it processes today or the next US business day.</p>
+
+  <div id="app">
+    <label>Bank
+      <select id="bank"></select>
+    </label>
+
+    <label>Transfer Type
+      <select id="rail">
+        <option value="ach">ACH</option>
+        <option value="wire">Wire</option>
+      </select>
+    </label>
+
+    <label>Date
+      <input type="date" id="date">
+    </label>
+
+    <label>Time
+      <input type="time" id="time">
+    </label>
+
+    <button onclick="check()">Check</button>
+    <div id="result"></div>
+  </div>
+</main>
+
+<footer>
+  <p>Static utility · Deterministic output · No accounts</p>
+  <p>© 2026 bankcutoffchecker.com</p>
+</footer>
+
+<script src="assets/app.js"></script>
+</body>
+</html>

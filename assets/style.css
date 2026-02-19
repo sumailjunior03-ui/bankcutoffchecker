@@ -1,0 +1,7 @@
+body{font-family:system-ui;background:#0b0d10;color:#e9eef4;margin:0}
+header,footer{padding:16px;background:#12161b}
+nav a{color:#7aa2f7;margin-right:12px;text-decoration:none}
+main{padding:20px;max-width:800px;margin:auto}
+label{display:block;margin:12px 0}
+button{padding:10px 14px;font-weight:bold}
+#result{margin-top:16px;font-size:18px}
