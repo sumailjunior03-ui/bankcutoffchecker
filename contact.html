@@ -1,6 +1,85 @@
 <!doctype html>
-<html><head><title>Contact</title></head>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact — Bank Cutoff Time Checker</title>
+    <meta name="description"
+        content="Check whether an ACH or wire transfer is before the cutoff and whether it will process today or next business day (US, ET)." />
+    <script src="assets/config.js"></script>
+    <!-- AdSense verification + placeholders (inactive by default; enable in AdSense dashboard) -->
+    <meta name="google-adsense-account" content="" id="adsenseMeta">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" crossorigin="anonymous"
+        id="adsenseScript"></script>
+    <link rel="stylesheet" href="assets/styles.css" />
+    <script>
+        // Inject pub id once, from config, so dev only edits one line (assets/config.js)
+        document.addEventListener("DOMContentLoaded", () => {
+            try {
+                const pub = (window.SITE_CONFIG && window.SITE_CONFIG.ADSENSE_PUB_ID) ? window.SITE_CONFIG.ADSENSE_PUB_ID : "";
+                const meta = document.getElementById("adsenseMeta");
+                const scr = document.getElementById("adsenseScript");
+                if (pub && pub.includes("ca-pub-")) {
+                    meta.setAttribute("content", pub);
+                    scr.setAttribute("src", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(pub));
+                }
+            } catch (e) { }
+        });
+    </script>
+</head>
+
 <body>
-<h1>Contact</h1>
-<p>This site is a static utility. There are no accounts or forms.</p>
-</body></html>
+    <div class="wrap">
+        <header>
+            <div class="brand">
+                <h1>Bank Cutoff Time Checker</h1>
+                <p>Deterministic ET cutoff + US business day rules.</p>
+            </div>
+            <nav>
+                <a href="index.html" class="">Home</a>
+                <a href="faq.html" class="">FAQ</a>
+                <a href="privacy.html" class="">Privacy</a>
+                <a href="contact.html" class="active">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Ad slots (inactive placeholders). When AdSense is enabled, you can convert these to real ad units. -->
+        <div class="ads" aria-hidden="true">
+            <strong>Ad slot (inactive)</strong><br />
+            This container is a placeholder for AdSense. Ads are enabled later in the AdSense dashboard.
+        </div>
+
+        <section class="card legal">
+            <h2>Contact</h2>
+            <p>If you notice an issue with a cutoff time, or you want to request another bank be added, send a message:
+            </p>
+
+            <h3>Email</h3>
+            <p><span class="k">hello@bankcutoffchecker.com</span></p>
+
+            <h3>What to include</h3>
+            <ul>
+                <li>Bank name</li>
+                <li>Transfer type (ACH / wire)</li>
+                <li>Where you saw a different cutoff (public link or screenshot)</li>
+            </ul>
+
+            <div class="sep"></div>
+            <p class="mini">Note: We do not provide financial advice. This site is an informational planning tool.</p>
+        </section>
+
+
+        <div class="foot">
+            <div class="sep"></div>
+            <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

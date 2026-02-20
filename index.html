@@ -2,68 +2,128 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <title>Bank Cutoff Time Checker (US)</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Cutoff Time Checker</title>
   <meta name="description"
-    content="Check whether a bank payment processes today or next business day based on cutoff times and US federal holidays.">
-
-  <!-- AdSense (inactive by default; required for review) -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165"
-    crossorigin="anonymous"></script>
-
-  <link rel="stylesheet" href="assets/style.css">
+    content="Check whether an ACH or wire transfer is before the cutoff and whether it will process today or next business day (US, ET)." />
+  <script src="assets/config.js"></script>
+  <!-- AdSense verification + placeholders (inactive by default; enable in AdSense dashboard) -->
+  <meta name="google-adsense-account" content="" id="adsenseMeta">
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" crossorigin="anonymous"
+    id="adsenseScript"></script>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <script>
+    // Inject pub id once, from config, so dev only edits one line (assets/config.js)
+    document.addEventListener("DOMContentLoaded", () => {
+      try {
+        const pub = (window.SITE_CONFIG && window.SITE_CONFIG.ADSENSE_PUB_ID) ? window.SITE_CONFIG.ADSENSE_PUB_ID : "";
+        const meta = document.getElementById("adsenseMeta");
+        const scr = document.getElementById("adsenseScript");
+        if (pub && pub.includes("ca-pub-")) {
+          meta.setAttribute("content", pub);
+          scr.setAttribute("src", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(pub));
+        }
+      } catch (e) { }
+    });
+  </script>
 </head>
 
 <body>
-  <header>
-    <h1>Bank Cutoff Time Checker</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="faq.html">FAQ</a>
-      <a href="privacy.html">Privacy</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-  </header>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>Bank Cutoff Time Checker</h1>
+        <p>Deterministic ET cutoff + US business day rules.</p>
+      </div>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="faq.html" class="">FAQ</a>
+        <a href="privacy.html" class="">Privacy</a>
+        <a href="contact.html" class="">Contact</a>
+      </nav>
+    </header>
 
-  <main>
-    <h2>Will your payment process today?</h2>
-    <p>Check bank cutoff times to see whether your transfer processes today or the next US business day.</p>
-
-    <div id="app">
-      <label>Bank
-        <select id="bank"></select>
-      </label>
-
-      <label>Transfer Type
-        <select id="rail">
-          <option value="ach">ACH (Standard)</option>
-          <option value="same_day_ach">ACH (Same-Day)</option>
-          <option value="wire">Wire</option>
-        </select>
-      </label>
-
-      <label>Date
-        <input type="date" id="date">
-        <small class="muted">Defaults to today</small>
-      </label>
-
-      <label>Time
-        <input type="text" id="time" placeholder="3:45 PM ET">
-        <small class="muted">All times assumed Eastern Time (ET)</small>
-      </label>
-
-      <button onclick="check()">Check cutoff</button>
-      <div id="result"></div>
+    <!-- Ad slots (inactive placeholders). When AdSense is enabled, you can convert these to real ad units. -->
+    <div class="ads" aria-hidden="true">
+      <strong>Ad slot (inactive)</strong><br />
+      This container is a placeholder for AdSense. Ads are enabled later in the AdSense dashboard.
     </div>
-  </main>
 
-  <footer class="footer">
-    Static utility · Deterministic output · No logins · No tracking
-    <p>© 2026 bankcutoffchecker.com</p>
-  </footer>
+    <div class="grid">
+      <section class="card">
+        <h2>Check cutoff → process date</h2>
+        <p>Pick a bank and transfer type, then enter the date and time (Eastern Time). The tool returns whether it
+          should process today or on the next business day.</p>
 
-  <script src="assets/app.js"></script>
+        <div class="form">
+          <div class="row">
+            <div>
+              <label for="bank">Bank</label>
+              <select id="bank"></select>
+              <div class="hint">v1 includes 10 major U.S. banks.</div>
+            </div>
+            <div>
+              <label for="transfer">Transfer type</label>
+              <select id="transfer"></select>
+              <div class="hint">All cutoffs are evaluated in ET.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="date">Date</label>
+              <input id="date" type="date" />
+            </div>
+            <div>
+              <label for="time">Time (ET, 24-hour)</label>
+              <input id="time" type="text" inputmode="numeric" placeholder="e.g., 14:35" />
+              <div class="hint">Use HH:MM (24-hour). Example: 09:05, 16:40.</div>
+            </div>
+          </div>
+
+          <button class="btn" id="checkBtn">Check cutoff</button>
+
+          <div id="out" class="result" hidden>
+            <div id="badge" class="badge">—</div>
+            <p id="big" class="big"></p>
+            <p id="explain" class="explain"></p>
+            <div id="detail"></div>
+          </div>
+
+          <p class="mini">
+            Disclaimer: This is an informational tool using common cutoff windows and US federal holidays (observed).
+            Banks and channels may differ. If you need certainty, submit earlier.
+          </p>
+        </div>
+        <script src="assets/app.js"></script>
+      </section>
+
+      <aside class="card">
+        <h2>What this tool is for</h2>
+        <p>People often ask "Did I miss the cutoff?" right before moving money. This tool gives a deterministic answer
+          using:</p>
+        <ul>
+          <li>the selected bank's cutoff time (ET)</li>
+          <li>the selected transfer type</li>
+          <li>US business day rules (weekends + observed federal holidays)</li>
+        </ul>
+        <div class="sep"></div>
+        <p class="mini"><span class="k">Hands-off</span> v1 ships complete. No accounts, no tracking, no subscriptions.
+        </p>
+      </aside>
+    </div>
+
+
+    <div class="foot">
+      <div class="sep"></div>
+      <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET</div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 
 </html>
