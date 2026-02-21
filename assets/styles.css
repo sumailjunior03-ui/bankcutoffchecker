@@ -268,3 +268,24 @@ li {
     background: var(--border);
     margin: 14px 0
 }
+
+/* Optional, subtle footer/contact styling. Use only if it matches current design. */
+.business-contact,
+.related-tools {
+  margin-top: 6px;
+  font-size: 0.85em;
+  opacity: 0.9;
+}
+
+.business-contact a,
+.related-tools a {
+  text-decoration: underline;
+}
+
+.business-partnerships {
+  margin-top: 24px;
+}
+
+.business-partnerships h2 {
+  margin-bottom: 8px;
+}
