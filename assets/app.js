@@ -89,6 +89,8 @@
 
     // New Year's Day (Jan 1)
     addObserved(new Date(year, 0, 1));
+    // Edge case: if Jan 1 falls on Saturday, observed is Dec 31 of previous year
+    if (new Date(year, 0, 1).getDay() === 6) { set.add(ymd(new Date(year - 1, 11, 31))); }
     // Martin Luther King Jr. Day (3rd Mon in Jan)
     set.add(ymd(nthWeekdayOfMonth(3, 1, 0)));
     // Washington's Birthday / Presidents Day (3rd Mon in Feb)
@@ -162,6 +164,7 @@
     // Defaults: today + current ET time rounded to minutes (user will input anyway)
     const now = new Date();
     $("date").value = ymd(now);
+    $("time").value = pad2(now.getHours()) + ":" + pad2(now.getMinutes());
 
     $("checkBtn").addEventListener("click", onCheck);
 
@@ -212,8 +215,8 @@
 
     const cutMin = minutesSinceMidnight(cut);
 
-    const [yy, mm, dd] = dateStr.split("-").map(Number);
-    const dateObj = new Date(yy, mm - 1, dd);
+    const [y, m, d] = dateStr.split('-').map(Number);
+    const dateObj = new Date(y, m - 1, d);
 
     const biz = isBusinessDayET(dateObj);
     const beforeCutoff = tMin <= cutMin;

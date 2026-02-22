@@ -7,26 +7,9 @@
     <title>Privacy Policy — Bank Cutoff Time Checker</title>
     <meta name="description"
         content="Check whether an ACH or wire transfer is before the cutoff and whether it will process today or next business day (US, ET)." />
-    <script src="assets/config.js"></script>
-    <!-- AdSense verification + placeholders (inactive by default; enable in AdSense dashboard) -->
-    <meta name="google-adsense-account" content="" id="adsenseMeta">
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" crossorigin="anonymous"
-        id="adsenseScript"></script>
+    <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="assets/styles.css" />
-    <script>
-        // Inject pub id once, from config, so dev only edits one line (assets/config.js)
-        document.addEventListener("DOMContentLoaded", () => {
-            try {
-                const pub = (window.SITE_CONFIG && window.SITE_CONFIG.ADSENSE_PUB_ID) ? window.SITE_CONFIG.ADSENSE_PUB_ID : "";
-                const meta = document.getElementById("adsenseMeta");
-                const scr = document.getElementById("adsenseScript");
-                if (pub && pub.includes("ca-pub-")) {
-                    meta.setAttribute("content", pub);
-                    scr.setAttribute("src", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(pub));
-                }
-            } catch (e) { }
-        });
-    </script>
 </head>
 
 <body>
@@ -89,24 +72,27 @@
         </section>
 
 
-        <div class="foot">
-            <div class="business-contact">
-                Business inquiries:
-                <a href="mailto:partnerships@bankcutoffchecker.com">partnerships@bankcutoffchecker.com</a>
-            </div>
-            <div class="related-tools">
-                Related tools:
-                <a href="https://bizdaychecker.com">Business Day Calculator</a>
-            </div>
+        <footer class="foot">
             <div class="sep"></div>
-            <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET
+            <div class="network-links related-tools"><strong>Related Tools:</strong> <a href="https://bizdaychecker.com" target="_blank" rel="noopener">BizDayChecker.com</a> &nbsp;•&nbsp; <a href="https://salaryvsinflation.com" target="_blank" rel="noopener">SalaryVsInflation.com</a></div>
+            <div class="footer-links">
+                <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+                <a href="legal.html">Legal</a> &nbsp;|&nbsp;
+                <a href="faq.html">FAQ</a> &nbsp;|&nbsp;
+                <a href="contact.html">Contact</a>
             </div>
-        </div>
+            <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET</div>
+            <p style="margin-top:12px;font-size:0.9rem;opacity:0.85;">
+                Sponsored placements &amp; partnerships:
+                <a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a>
+            </p>
+        </footer>
     </div>
 
     <script>
         document.getElementById("y").textContent = new Date().getFullYear();
     </script>
+  <script src="network.js"></script>
 </body>
 
 </html>

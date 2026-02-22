@@ -7,26 +7,9 @@
   <title>Bank Cutoff Time Checker</title>
   <meta name="description"
     content="Check whether an ACH or wire transfer is before the cutoff and whether it will process today or next business day (US, ET)." />
-  <script src="assets/config.js"></script>
-  <!-- AdSense verification + placeholders (inactive by default; enable in AdSense dashboard) -->
-  <meta name="google-adsense-account" content="" id="adsenseMeta">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" crossorigin="anonymous"
-    id="adsenseScript"></script>
+  <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="assets/styles.css" />
-  <script>
-    // Inject pub id once, from config, so dev only edits one line (assets/config.js)
-    document.addEventListener("DOMContentLoaded", () => {
-      try {
-        const pub = (window.SITE_CONFIG && window.SITE_CONFIG.ADSENSE_PUB_ID) ? window.SITE_CONFIG.ADSENSE_PUB_ID : "";
-        const meta = document.getElementById("adsenseMeta");
-        const scr = document.getElementById("adsenseScript");
-        if (pub && pub.includes("ca-pub-")) {
-          meta.setAttribute("content", pub);
-          scr.setAttribute("src", "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=" + encodeURIComponent(pub));
-        }
-      } catch (e) { }
-    });
-  </script>
 </head>
 
 <body>
@@ -40,14 +23,26 @@
         <a href="index.html" class="active">Home</a>
         <a href="faq.html" class="">FAQ</a>
         <a href="privacy.html" class="">Privacy</a>
+        <a href="legal.html" class="">Legal</a>
         <a href="contact.html" class="">Contact</a>
       </nav>
     </header>
 
-    <!-- Ad slots (inactive placeholders). When AdSense is enabled, you can convert these to real ad units. -->
-    <div class="ads" aria-hidden="true">
-      <strong>Ad slot (inactive)</strong><br />
-      This container is a placeholder for AdSense. Ads are enabled later in the AdSense dashboard.
+    <!-- Sponsor banner (inactive — enable when sponsor confirmed) -->
+    <div class="sponsor-banner" style="display:none;" aria-hidden="true">
+      <span class="sponsor-label">Sponsored</span>
+      <span class="sponsor-content"><!-- Sponsor content here --></span>
+    </div>
+
+    <!-- AdSense top slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7744853829365165"
+           data-ad-slot="TOP_AD_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
 
     <div class="grid">
@@ -77,7 +72,7 @@
             </div>
             <div>
               <label for="time">Time (ET, 24-hour)</label>
-              <input id="time" type="text" inputmode="numeric" placeholder="e.g., 14:35" />
+              <input id="time" type="text" inputmode="numeric" placeholder="e.g., 14:35" maxlength="5" />
               <div class="hint">Use HH:MM (24-hour). Example: 09:05, 16:40.</div>
             </div>
           </div>
@@ -109,29 +104,50 @@
           <li>US business day rules (weekends + observed federal holidays)</li>
         </ul>
         <div class="sep"></div>
-        <p class="mini"><span class="k">Hands-off</span> v1 ships complete. No accounts, no tracking, no subscriptions.
-        </p>
+        <p class="mini"><span class="k">Hands-off</span> v1 ships complete. No accounts, no tracking, no subscriptions.</p>
+        <div class="sep"></div>
+        <p class="mini"><strong>Disclaimer:</strong> Results are informational estimates only. Not financial advice. Always verify deadlines directly with your bank. <a href="legal.html">Full legal disclaimer →</a></p>
+
+        <!-- Sidebar sponsor slot (inactive — enable when sponsor confirmed) -->
+        <div class="sponsor-sidebar" style="display:none;" aria-hidden="true">
+          <span class="sponsor-label">Sponsored</span>
+          <!-- Sponsor content here -->
+        </div>
       </aside>
     </div>
 
-
-    <div class="foot">
-      <div class="business-contact">
-        Business inquiries:
-        <a href="mailto:partnerships@bankcutoffchecker.com">partnerships@bankcutoffchecker.com</a>
-      </div>
-      <div class="related-tools">
-        Related tools:
-        <a href="https://bizdaychecker.com">Business Day Calculator</a>
-      </div>
-      <div class="sep"></div>
-      <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET</div>
+    <!-- AdSense bottom slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7744853829365165"
+           data-ad-slot="BOTTOM_AD_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
     </div>
+
+    <footer class="foot">
+      <div class="sep"></div>
+      <div class="network-links related-tools"><strong>Related Tools:</strong> <a href="https://bizdaychecker.com" target="_blank" rel="noopener">BizDayChecker.com</a> &nbsp;•&nbsp; <a href="https://salaryvsinflation.com" target="_blank" rel="noopener">SalaryVsInflation.com</a></div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+        <a href="legal.html">Legal</a> &nbsp;|&nbsp;
+        <a href="faq.html">FAQ</a> &nbsp;|&nbsp;
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET</div>
+      <p style="margin-top:12px;font-size:0.9rem;opacity:0.85;">
+        Sponsored placements &amp; partnerships:
+        <a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a>
+      </p>
+    </footer>
   </div>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
   </script>
+  <script src="network.js"></script>
 </body>
 
 </html>
