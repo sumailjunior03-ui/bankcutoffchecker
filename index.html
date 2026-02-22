@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Bank Cutoff Time Checker</title>
+  <meta name="description"
+    content="Check whether an ACH or wire transfer is before the cutoff and whether it will process today or next business day (US, ET)." />
+  <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <h1>Bank Cutoff Time Checker</h1>
+        <p>Deterministic ET cutoff + US business day rules.</p>
+      </div>
+      <nav>
+        <a href="index.html" class="active">Home</a>
+        <a href="faq.html" class="">FAQ</a>
+        <a href="privacy.html" class="">Privacy</a>
+        <a href="legal.html" class="">Legal</a>
+        <a href="contact.html" class="">Contact</a>
+      </nav>
+    </header>
+
+    <!-- Sponsor banner (inactive — enable when sponsor confirmed) -->
+    <div class="sponsor-banner" style="display:none;" aria-hidden="true">
+      <span class="sponsor-label">Sponsored</span>
+      <span class="sponsor-content"><!-- Sponsor content here --></span>
+    </div>
+
+    <!-- AdSense top slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7744853829365165"
+           data-ad-slot="TOP_AD_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <div class="grid">
+      <section class="card">
+        <h2>Check cutoff → process date</h2>
+        <p>Pick a bank and transfer type, then enter the date and time (Eastern Time). The tool returns whether it
+          should process today or on the next business day.</p>
+
+        <div class="form">
+          <div class="row">
+            <div>
+              <label for="bank">Bank</label>
+              <select id="bank"></select>
+              <div class="hint">v1 includes 10 major U.S. banks.</div>
+            </div>
+            <div>
+              <label for="transfer">Transfer type</label>
+              <select id="transfer"></select>
+              <div class="hint">All cutoffs are evaluated in ET.</div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div>
+              <label for="date">Date</label>
+              <input id="date" type="date" />
+            </div>
+            <div>
+              <label for="time">Time (ET, 24-hour)</label>
+              <input id="time" type="text" inputmode="numeric" placeholder="e.g., 14:35" maxlength="5" />
+              <div class="hint">Use HH:MM (24-hour). Example: 09:05, 16:40.</div>
+            </div>
+          </div>
+
+          <button class="btn" id="checkBtn">Check cutoff</button>
+
+          <div id="out" class="result" hidden>
+            <div id="badge" class="badge">—</div>
+            <p id="big" class="big"></p>
+            <p id="explain" class="explain"></p>
+            <div id="detail"></div>
+          </div>
+
+          <p class="mini">
+            Disclaimer: This is an informational tool using common cutoff windows and US federal holidays (observed).
+            Banks and channels may differ. If you need certainty, submit earlier.
+          </p>
+        </div>
+        <script src="assets/app.js"></script>
+      </section>
+
+      <aside class="card">
+        <h2>What this tool is for</h2>
+        <p>People often ask "Did I miss the cutoff?" right before moving money. This tool gives a deterministic answer
+          using:</p>
+        <ul>
+          <li>the selected bank's cutoff time (ET)</li>
+          <li>the selected transfer type</li>
+          <li>US business day rules (weekends + observed federal holidays)</li>
+        </ul>
+        <div class="sep"></div>
+        <p class="mini"><span class="k">Hands-off</span> v1 ships complete. No accounts, no tracking, no subscriptions.</p>
+        <div class="sep"></div>
+        <p class="mini"><strong>Disclaimer:</strong> Results are informational estimates only. Not financial advice. Always verify deadlines directly with your bank. <a href="legal.html">Full legal disclaimer →</a></p>
+
+        <!-- Sidebar sponsor slot (inactive — enable when sponsor confirmed) -->
+        <div class="sponsor-sidebar" style="display:none;" aria-hidden="true">
+          <span class="sponsor-label">Sponsored</span>
+          <!-- Sponsor content here -->
+        </div>
+      </aside>
+    </div>
+
+    <!-- AdSense bottom slot -->
+    <div class="ad-slot">
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-7744853829365165"
+           data-ad-slot="BOTTOM_AD_SLOT_ID"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <footer class="foot">
+      <div class="sep"></div>
+      <div class="network-links related-tools"><strong>Related Tools:</strong> <a href="https://bizdaychecker.com" target="_blank" rel="noopener">BizDayChecker.com</a> &nbsp;•&nbsp; <a href="https://salaryvsinflation.com" target="_blank" rel="noopener">SalaryVsInflation.com</a></div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a> &nbsp;|&nbsp;
+        <a href="legal.html">Legal</a> &nbsp;|&nbsp;
+        <a href="faq.html">FAQ</a> &nbsp;|&nbsp;
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>© <span id="y"></span> Bank Cutoff Time Checker • US federal holidays (observed) • All times in ET</div>
+      <p style="margin-top:12px;font-size:0.9rem;opacity:0.85;">
+        Sponsored placements &amp; partnerships:
+        <a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+  <script src="network.js"></script>
+</body>
+
+</html>
