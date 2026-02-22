@@ -1,3 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://bankcutoffchecker.com/sitemap.xml
