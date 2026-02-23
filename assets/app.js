@@ -124,6 +124,12 @@
     if (isWeekend(dateObj)) return { ok: false, reason: "Weekend" };
     const y = dateObj.getFullYear();
     const holidays = usFederalObservedHolidays(y);
+    // Also check next year's holiday set: Dec 31 can be the observed day for
+    // Jan 1 of the following year when Jan 1 falls on a Saturday.
+    if (dateObj.getMonth() === 11 && dateObj.getDate() === 31) {
+      const nextYearHolidays = usFederalObservedHolidays(y + 1);
+      nextYearHolidays.forEach(h => holidays.add(h));
+    }
     if (holidays.has(ymd(dateObj))) return { ok: false, reason: "US federal holiday (observed)" };
     return { ok: true, reason: "Business day" };
   }
@@ -161,10 +167,11 @@
       transferSel.appendChild(opt);
     });
 
-    // Defaults: today + current ET time rounded to minutes (user will input anyway)
-    const now = new Date();
-    $("date").value = ymd(now);
-    $("time").value = pad2(now.getHours()) + ":" + pad2(now.getMinutes());
+    // Defaults: today + current ET time (user will input anyway)
+    // Must use ET because all cutoffs are evaluated in Eastern Time.
+    const nowET = new Date(new Date().toLocaleString("en-US", { timeZone: "America/New_York" }));
+    $("date").value = ymd(nowET);
+    $("time").value = pad2(nowET.getHours()) + ":" + pad2(nowET.getMinutes());
 
     $("checkBtn").addEventListener("click", onCheck);
 
@@ -219,7 +226,7 @@
     const dateObj = new Date(y, m - 1, d);
 
     const biz = isBusinessDayET(dateObj);
-    const beforeCutoff = tMin <= cutMin;
+    const beforeCutoff = tMin < cutMin; // strict: at cutoff = missed
 
     let processesToday = biz.ok && beforeCutoff;
     let processingDate = dateObj;
@@ -234,7 +241,7 @@
       processingDate = nextBusinessDay(dateObj);
       why = `Time is after the cutoff (${cut} ET) for this selection.`;
     } else {
-      why = `Time is on/before the cutoff (${cut} ET) and the date is a business day.`;
+      why = `Time is before the cutoff (${cut} ET) and the date is a business day.`;
     }
 
     const bankName = BANKS.find(b => b.id === bankId)?.name || "Selected bank";
@@ -263,5 +270,11 @@
     out.hidden = false;
   }
 
-  document.addEventListener("DOMContentLoaded", init);
+  // Guard against iOS Safari edge case where DOMContentLoaded can fire
+  // before a mid-body blocking script finishes registering its listener.
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
 })();
