@@ -5,7 +5,8 @@
 window.CALCHQ_NETWORK = [
   { name: "BizDayChecker.com", url: "https://bizdaychecker.com" },
   { name: "BankCutoffChecker.com", url: "https://bankcutoffchecker.com" },
-  { name: "SalaryVsInflation.com", url: "https://salaryvsinflation.com" }
+  { name: "SalaryVsInflation.com", url: "https://salaryvsinflation.com" },
+  { name: "hourly2salarycalc.com", url: "https://hourly2salarycalc.com" },
 ];
 
 (function () {
@@ -25,9 +26,17 @@ window.CALCHQ_NETWORK = [
       if (!sites.length) return;
 
       let html = "<strong>Related Tools:</strong> ";
-      html += sites.map(function (site, i) {
-        return '<a href="' + site.url + '" target="_blank" rel="noopener">' + site.name + "</a>";
-      }).join(" &nbsp;•&nbsp; ");
+      html += sites
+        .map(function (site, i) {
+          return (
+            '<a href="' +
+            site.url +
+            '" target="_blank" rel="noopener">' +
+            site.name +
+            "</a>"
+          );
+        })
+        .join(" &nbsp;•&nbsp; ");
 
       container.innerHTML = html;
     });
