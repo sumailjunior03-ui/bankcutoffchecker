@@ -8,7 +8,6 @@ window.CALCHQ_NETWORK = [
   { name: "SalaryVsInflation.com", url: "https://salaryvsinflation.com" },
   { name: "hourly2salarycalc.com", url: "https://hourly2salarycalc.com" },
   { name: "TokenToDollarMargin.com", url: "https://tokentodollarmargin.com" },
-  { name: "CalcHQ.com", url: "https://calc-hq.com" },
 ];
 
 (function () {
