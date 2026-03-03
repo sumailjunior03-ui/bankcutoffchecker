@@ -11,6 +11,7 @@ window.CALCHQ_NETWORK = [
   { name: "TokenToDollarMargin.com", url: "https://tokentodollarmargin.com" },
   { name: "PayrollDateChecker.com", url: "https://payrolldatechecker.com" },
   { name: "1099vsw2calc.com",       url: "https://1099vsw2calc.com" },
+  { name: "FreelanceIncomeCalc.com", url: "https://freelanceincomecalc.com" },
 ];
 
 (function () {
