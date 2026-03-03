@@ -4,6 +4,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Bank Cutoff Time Checker</title>
+        <link rel="canonical" href="https://bankcutoffchecker.com/"/>
         <meta
             name="description"
             content="Check whether an ACH or wire transfer is before the cutoff and whether it will process today or next business day (US, ET)."
@@ -33,32 +34,10 @@
                 </nav>
             </header>
 
-            <!-- Sponsor banner (inactive — enable when sponsor confirmed) -->
-            <div
-                class="sponsor-banner"
-                style="display: none"
-                aria-hidden="true"
-            >
-                <span class="sponsor-label">Sponsored</span>
-                <span class="sponsor-content"
-                    ><!-- Sponsor content here --></span
-                >
-            </div>
-
-            <!-- AdSense top slot -->
-            <div class="ad-slot">
-                <ins
-                    class="adsbygoogle"
-                    style="display: block"
-                    data-ad-client="ca-pub-7744853829365165"
-                    data-ad-slot="TOP_AD_SLOT_ID"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            <!-- Sponsor (inactive by default) -->
+            <div id="sponsor" class="sponsor-slot is-off" aria-label="Sponsor"></div>
+            <!-- Ads (collapsed by default) -->
+            <div id="adTop" class="ad-slot is-off" aria-label="Advertisement"></div>
 
             <div class="grid">
                 <section class="card">
@@ -166,20 +145,7 @@
                 </aside>
             </div>
 
-            <!-- AdSense bottom slot -->
-            <div class="ad-slot">
-                <ins
-                    class="adsbygoogle"
-                    style="display: block"
-                    data-ad-client="ca-pub-7744853829365165"
-                    data-ad-slot="BOTTOM_AD_SLOT_ID"
-                    data-ad-format="auto"
-                    data-full-width-responsive="true"
-                ></ins>
-                <script>
-                    (adsbygoogle = window.adsbygoogle || []).push({});
-                </script>
-            </div>
+            <div id="adBottom" class="ad-slot is-off" aria-label="Advertisement"></div>
 
             <footer class="foot">
                 <div class="sep"></div>
@@ -206,6 +172,8 @@
         <script>
             document.getElementById("y").textContent = new Date().getFullYear();
         </script>
+        <script src="assets/config.js"></script>
+        <script src="assets/ads.js"></script>
         <script src="network.js"></script>
     </body>
 </html>
