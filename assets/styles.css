@@ -1,12 +1,12 @@
 :root {
-    --bg: #0b0d12;
-    --card: #121622;
-    --muted: #aab3c5;
-    --text: #eef2ff;
-    --border: #24304a;
-    --accent: #7aa2ff;
-    --danger: #ff7a7a;
-    --ok: #7affb2;
+    --bg: #ffffff;
+    --card: #ffffff;
+    --muted: #6b7280;
+    --text: #111827;
+    --border: #e5e7eb;
+    --accent: #2563eb;
+    --danger: #dc2626;
+    --ok: #16a34a;
 }
 
 * {
@@ -139,7 +139,7 @@ input {
     padding: 11px 12px;
     border-radius: 10px;
     border: 1px solid var(--border);
-    background: #0e1220;
+    background: #f9fafb;
     color: var(--text);
     outline: none
 }
@@ -158,9 +158,9 @@ input:focus {
 .btn {
     padding: 12px 14px;
     border-radius: 10px;
-    border: 1px solid var(--border);
-    background: linear-gradient(180deg, #1a2238, #121a2d);
-    color: var(--text);
+    border: 1px solid #111827;
+    background: #111827;
+    color: #ffffff;
     font-weight: 600;
     cursor: pointer
 }
@@ -173,7 +173,7 @@ input:focus {
     border-radius: 14px;
     padding: 14px;
     border: 1px solid var(--border);
-    background: #0e1220
+    background: #f9fafb
 }
 
 .badge {
@@ -189,12 +189,12 @@ input:focus {
 }
 
 .badge.ok {
-    border-color: rgba(122, 255, 178, .35);
+    border-color: rgba(22, 163, 74, .35);
     color: var(--ok)
 }
 
 .badge.no {
-    border-color: rgba(255, 122, 122, .35);
+    border-color: rgba(220, 38, 38, .35);
     color: var(--danger)
 }
 
@@ -221,12 +221,12 @@ input:focus {
 }
 
 .ads {
-    border: 1px dashed rgba(170, 179, 197, .4);
+    border: 1px dashed rgba(107, 114, 128, .4);
     border-radius: 12px;
     padding: 12px;
     color: var(--muted);
     font-size: 12px;
-    background: rgba(0, 0, 0, .15)
+    background: #f9fafb
 }
 
 .ads strong {
@@ -277,8 +277,8 @@ li {
 .is-off { display: none !important; }
 
 .sponsor-slot {
-    background: rgba(255, 235, 150, 0.08);
-    border: 1px solid rgba(255, 220, 100, 0.25);
+    background: #fffbe6;
+    border: 1px solid #ffe58f;
     border-radius: 8px;
     padding: 12px 16px;
     margin: 10px 0 16px;
@@ -288,8 +288,8 @@ li {
 
 /* Sponsor zones */
 .sponsor-banner {
-    background: rgba(255, 235, 150, 0.08);
-    border: 1px solid rgba(255, 220, 100, 0.25);
+    background: #fffbe6;
+    border: 1px solid #ffe58f;
     border-radius: 8px;
     padding: 12px 16px;
     margin-top: 10px;
@@ -301,8 +301,8 @@ li {
 }
 
 .sponsor-sidebar {
-    background: rgba(255, 235, 150, 0.08);
-    border: 1px solid rgba(255, 220, 100, 0.25);
+    background: #fffbe6;
+    border: 1px solid #ffe58f;
     border-radius: 8px;
     padding: 12px;
     margin-top: 16px;
