@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Bank Cutoff Time Checker</title>
+        <title>Bank Cutoff Time Checker | BankCutoffChecker.com</title>
         <link rel="canonical" href="https://bankcutoffchecker.com/"/>
         <meta
             name="description"
@@ -16,6 +16,17 @@
             crossorigin="anonymous"
         ></script>
         <link rel="stylesheet" href="assets/styles.css" />
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Bank Cutoff Time Checker",
+            "url": "https://bankcutoffchecker.com/",
+            "applicationCategory": "FinanceApplication",
+            "operatingSystem": "All",
+            "description": "Online bank cutoff time checker that estimates whether a transaction may process the same business day or the next business day based on bank cutoff rules."
+        }
+        </script>
     </head>
 
     <body>
@@ -146,6 +157,91 @@
             </div>
 
             <div id="adBottom" class="ad-slot is-off" aria-label="Advertisement"></div>
+
+            <section class="calculator-explanation">
+                <h2>What This Calculator Does</h2>
+                <p>The Bank Cutoff Time Checker estimates whether a financial transaction will process the same business day or roll to the next business day based on bank cutoff times.</p>
+                <p>Most banks and financial institutions have daily cutoff times for processing transactions such as wire transfers, ACH transfers, and payroll submissions.</p>
+                <p>If a transaction is submitted before the cutoff time, it is usually processed the same business day. If it is submitted after the cutoff time, the transaction typically moves to the next business day.</p>
+                <p>This calculator helps estimate the expected processing timing based on the selected bank and the transaction submission time.</p>
+            </section>
+
+            <section class="calculator-explanation">
+                <h2>Example Bank Cutoff Calculation</h2>
+                <ul>
+                    <li><strong>Bank cutoff time:</strong> 5:00 PM ET</li>
+                    <li><strong>Transaction submitted:</strong> 4:30 PM ET</li>
+                </ul>
+                <p>Because the transaction was submitted <em>before</em> the cutoff time, it may be processed the same business day.</p>
+                <ul>
+                    <li><strong>Bank cutoff time:</strong> 5:00 PM ET</li>
+                    <li><strong>Transaction submitted:</strong> 6:15 PM ET</li>
+                </ul>
+                <p>Because the transaction was submitted <em>after</em> the cutoff time, processing would typically occur on the next business day.</p>
+            </section>
+
+            <section class="calculator-explanation">
+                <h2>Cutoff Time Decision Rule</h2>
+                <p><strong>Processing Result = Transaction Time compared to Bank Cutoff Time</strong></p>
+                <ul>
+                    <li>If the transaction time is <strong>before</strong> the cutoff time, it may process the same business day.</li>
+                    <li>If the transaction time is <strong>after</strong> the cutoff time, processing typically occurs on the next business day.</li>
+                </ul>
+                <p>If the resulting processing date falls on a weekend or U.S. federal holiday, the calculator moves the date forward to the next available business day.</p>
+            </section>
+
+            <section class="calculator-explanation">
+                <h2>Calculation Methodology</h2>
+                <p>This calculator estimates transaction processing timing using the following steps:</p>
+                <ol>
+                    <li>The calculator identifies the cutoff time associated with the selected bank and transfer type.</li>
+                    <li>The transaction submission time is compared against that cutoff time in Eastern Time (ET).</li>
+                    <li>If the submission occurs before the cutoff, the transaction may process the same business day.</li>
+                    <li>If the submission occurs after the cutoff, the transaction typically moves to the next business day.</li>
+                    <li>Weekend days and all 11 U.S. federal holidays (observed) are skipped when determining the next business day.</li>
+                </ol>
+                <p>This tool provides an estimate for planning purposes. Actual processing times may vary depending on bank policies and settlement systems.</p>
+            </section>
+
+            <section class="calculator-explanation">
+                <h2>Common Bank Cutoff Scenarios</h2>
+                <ul>
+                    <li><strong>Wire transfers</strong> — verifying whether a same-day wire will settle before the bank's cutoff</li>
+                    <li><strong>ACH payments</strong> — determining if an ACH payment will post before a deadline</li>
+                    <li><strong>Payroll submissions</strong> — checking whether payroll will process on time for the pay date</li>
+                    <li><strong>Bill payments</strong> — estimating when a bank transfer will clear relative to a due date</li>
+                    <li><strong>Holiday planning</strong> — planning transaction timing around weekends and federal holidays</li>
+                </ul>
+            </section>
+
+            <section class="calculator-explanation">
+                <h2>Frequently Asked Questions</h2>
+
+                <h3>What time zone does the tool use?</h3>
+                <p>All cutoffs are evaluated in Eastern Time (ET). Enter your transaction time as ET regardless of your local time zone.</p>
+
+                <h3>Which banks are supported?</h3>
+                <p>v1 includes 10 major U.S. banks: Chase, Bank of America, Wells Fargo, Citi, U.S. Bank, PNC, Capital One, TD Bank (US), Truist, and Ally.</p>
+
+                <h3>Are these cutoff times official?</h3>
+                <p>No. This tool uses common industry cutoff windows for quick planning estimates. Banks may vary cutoff times by channel, product, or account type. Always verify critical deadlines directly with your bank.</p>
+
+                <h3>What counts as a business day?</h3>
+                <p>A business day is Monday through Friday, excluding all 11 U.S. federal holidays (observed). If a fixed-date holiday falls on a weekend, the observed day (nearest weekday) is used.</p>
+
+                <h3>Does this tool store my data?</h3>
+                <p>No. All calculations run entirely in your browser. Nothing is sent to any server.</p>
+            </section>
+
+            <section class="calculator-explanation">
+                <h2>Related Calculators</h2>
+                <ul>
+                    <li><a href="https://bizdaychecker.com/" target="_blank" rel="noopener">Business Day Calculator</a> — count the exact number of business days between any two dates</li>
+                    <li><a href="https://payrolldatechecker.com/" target="_blank" rel="noopener">Payroll Date Checker</a> — calculate payroll processing and pay dates around holidays</li>
+                    <li><a href="https://hourly2salarycalc.com/" target="_blank" rel="noopener">Hourly to Salary Calculator</a> — convert hourly wages to annual salary equivalents</li>
+                    <li><a href="https://salaryvsinflation.com/" target="_blank" rel="noopener">Salary vs Inflation Calculator</a> — check whether your raise beats inflation</li>
+                </ul>
+            </section>
 
             <footer class="foot">
                 <div class="sep"></div>

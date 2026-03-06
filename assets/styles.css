@@ -329,3 +329,55 @@ li {
 .related-tools a:hover {
     text-decoration: underline;
 }
+
+/* Content sections (AdSense content depth) */
+.calculator-explanation {
+    background: #fff;
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin-top: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid var(--border);
+    line-height: 1.7;
+}
+
+.calculator-explanation h2 {
+    margin: 0 0 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.calculator-explanation h3 {
+    margin: 18px 0 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+}
+
+.calculator-explanation p {
+    margin: 0 0 12px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.calculator-explanation ul,
+.calculator-explanation ol {
+    margin: 0 0 12px;
+    padding-left: 22px;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.calculator-explanation li {
+    margin-bottom: 6px;
+}
+
+.calculator-explanation a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.calculator-explanation a:hover {
+    text-decoration: underline;
+}
