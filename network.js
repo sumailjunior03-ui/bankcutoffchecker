@@ -12,6 +12,7 @@ window.CALCHQ_NETWORK = [
   { name: "1099vsw2calc.com",       url: "https://1099vsw2calc.com" },
   { name: "FreelanceIncomeCalc.com", url: "https://freelanceincomecalc.com" },
   { name: "QuarterlyTaxCalc.com",   url: "https://quarterlytaxcalc.com" },
+  { name: "TotalCompCalc.com",      url: "https://totalcompcalc.com" },
 ];
 
 (function () {
