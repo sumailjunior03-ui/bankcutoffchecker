@@ -1,9 +1,11 @@
-/* CalcHQ Network — Central Site Directory
-   To add a new site: add one line to NETWORK_SITES array.
-   All sites update automatically. */
-
-window.CALCHQ_NETWORK = [
-  { name: "Calc-HQ", url: "https://calc-hq.com" },
+/* network.js — Calc-HQ strict. Related tools rendered by footer.js from this source. */
+window.CALC_HQ_NETWORK = [
+  {
+    "name": "Calc-HQ",
+    "url": "https://calc-hq.com",
+    "desc": "Financial calculator hub",
+    "live": true
+  }
 ];
 
 (function () {

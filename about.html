@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>About | Bank Cutoff Checker</title>
+  <meta name="description" content="About Bank Cutoff Checker and how it estimates processing dates using bank cutoff times, business days, and observed holidays." />
+  <link rel="canonical" href="https://bankcutoffchecker.com/about.html" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="About | BankCutoffChecker.com" />
+  <meta property="og:description" content="About Bank Cutoff Checker and how it estimates processing dates using bank cutoff times, business days, and observed holidays." />
+  <meta property="og:url" content="https://bankcutoffchecker.com/about.html" />
+  <meta name="google-adsense-account" content="ca-pub-7744853829365165" />
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7744853829365165" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "About",
+  "url": "https://bankcutoffchecker.com/about.html",
+  "description": "About Bank Cutoff Checker and how it estimates processing dates using bank cutoff times, business days, and observed holidays."
+}
+  </script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <h1>Bank Cutoff Checker</h1>
+      <p>Deterministic ET cutoff + US business day rules.</p>
+    </div>
+    <nav>
+      <a href="index.html">Home</a>
+      <a class="active" href="about.html">About</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="legal.html">Legal</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <div id="sponsor" class="sponsor-slot is-off" aria-label="Sponsor"></div>
+  <div id="adTop" class="ad-slot is-off" aria-label="Advertisement"></div>
+
+  <section class="card legal">
+    <h2>About Bank Cutoff Checker</h2>
+    <p>BankCutoffChecker.com is a deterministic calculator that helps users estimate when a transfer is treated as submitted, when the next processing window begins, and how cutoff times interact with weekends and Federal Reserve holidays.</p>
+
+    <h3>Purpose of This Tool</h3>
+    <p>This site exists to answer one narrow operational question: what happens to a transfer when the submission time lands before or after a bank cutoff? It translates bank timing rules into a simple estimate using transparent inputs and visible assumptions.</p>
+
+    <h3>Who This Tool Is For</h3>
+    <p>This tool is useful for individuals waiting on transfers, operations teams planning payment timing, and payroll or finance users who need a practical estimate of whether a payment shifts to the next business day.</p>
+
+    <h3>How The Calculator Works</h3>
+    <p>The calculator applies the selected bank's cutoff time, checks whether the input date is a business day, and then adjusts the effective processing date forward when the input falls after cutoff, on a weekend, or on an observed Federal Reserve holiday.</p>
+
+    <h3>About the Tool Network</h3>
+    <p>BankCutoffChecker.com is part of the <a href="https://calc-hq.com" target="_blank" rel="noopener">Calc-HQ</a> financial calculator network.</p>
+  </section>
+
+  <footer class="foot">
+    <div class="sep"></div>
+    <div class="network-links related-tools"><strong>Related tools:</strong> <span class="related-tools-links" id="relatedTools"></span></div>
+    <div class="footer-resources"><strong>Resources:</strong> <a href="https://calc-hq.com" rel="noopener" target="_blank">Financial Calculator Hub</a></div>
+    <div class="footer-links">
+      <a href="about.html">About</a> |
+      <a href="privacy.html">Privacy</a> |
+      <a href="legal.html">Legal</a> |
+      <a href="faq.html">FAQ</a> |
+      <a href="contact.html">Contact</a>
+    </div>
+    <div>© <span id="y"></span> Bank Cutoff Checker • US federal holidays (observed) • All times in ET</div>
+    <p style="margin-top:12px;font-size:0.9rem;opacity:0.85;">
+      Sponsor this tool: <a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a>
+    </p>
+  </footer>
+</div>
+<script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+<script src="assets/config.js"></script>
+<script src="network.js"></script>
+<script src="footer.js"></script>
+</body>
+</html>
