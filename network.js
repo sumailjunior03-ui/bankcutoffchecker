@@ -16,12 +16,14 @@ window.CALC_HQ_NETWORK = [
     const currentDomain = window.location.hostname.replace("www.", "");
 
     containers.forEach(function (container) {
-      const sites = window.CALCHQ_NETWORK.filter(function (site) {
+      const sites = window.CALC_HQ_NETWORK.filter(function (site) {
         try {
           const u = new URL(site.url);
-          return u.hostname.replace("www.", "") !== currentDomain;
+          const host = u.hostname.replace("www.", "");
+          if (host === "calc-hq.com") return false;
+          return host !== currentDomain;
         } catch (e) {
-          return true;
+          return false;
         }
       });
 
