@@ -33,9 +33,9 @@ a:hover {
 }
 
 .wrap {
-    max-width: 980px;
+    max-width: 800px;
     margin: 0 auto;
-    padding: 20px
+    padding: 16px
 }
 
 header {
@@ -216,7 +216,7 @@ input:focus {
 }
 
 .foot {
-    margin-top: 18px;
+    margin-top: 16px;
     color: var(--muted);
     font-size: 12px
 }
@@ -270,9 +270,49 @@ li {
     margin: 14px 0
 }
 
-/* Ad slots */
-.ad-slot {
-    margin: 16px 0;
+/* Ad slots — collapse when inactive */
+.ad-slot,
+.adsense-slot,
+.ad-container {
+    display: none;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.ad-slot.active,
+.adsense-slot.active,
+.ad-container.active {
+    display: block;
+    margin: 24px 0;
+}
+
+/* Adsense inline wrappers — collapse when no ad fills */
+.adsense-unit {
+    height: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.adsense-unit ins,
+.adsense-unit iframe {
+    height: 0 !important;
+    max-height: 0 !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+}
+
+.adsense-unit.active {
+    height: auto;
+    margin: 24px 0;
+}
+
+.adsense-unit.active ins,
+.adsense-unit.active iframe {
+    height: auto !important;
+    max-height: none !important;
 }
 
 .is-off { display: none !important; }
@@ -281,8 +321,8 @@ li {
     background: #fffbe6;
     border: 1px solid #ffe58f;
     border-radius: 8px;
-    padding: 12px 16px;
-    margin: 10px 0 16px;
+    padding: 10px 14px;
+    margin: 8px 0 10px;
     font-size: 0.9rem;
     cursor: pointer;
 }
@@ -292,9 +332,9 @@ li {
     background: #fffbe6;
     border: 1px solid #ffe58f;
     border-radius: 8px;
-    padding: 12px 16px;
-    margin-top: 10px;
-    margin-bottom: 16px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    margin-bottom: 10px;
     font-size: 0.9rem;
     display: flex;
     align-items: center;
@@ -330,47 +370,47 @@ li {
     text-decoration: underline;
 }
 
-/* Content sections (AdSense content depth) */
+/* Content sections */
 .calculator-explanation {
     background: #fff;
     border-radius: 12px;
-    padding: 24px 28px;
-    margin-top: 16px;
+    padding: 14px 18px;
+    margin-top: 10px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     border: 1px solid var(--border);
-    line-height: 1.7;
+    line-height: 1.6;
 }
 
 .calculator-explanation h2 {
-    margin: 0 0 14px;
-    font-size: 1.1rem;
+    margin: 0 0 8px;
+    font-size: 1.05rem;
     font-weight: 700;
     color: var(--text);
 }
 
 .calculator-explanation h3 {
-    margin: 18px 0 6px;
+    margin: 12px 0 4px;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text);
 }
 
 .calculator-explanation p {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     color: var(--muted);
     font-size: 0.92rem;
 }
 
 .calculator-explanation ul,
 .calculator-explanation ol {
-    margin: 0 0 12px;
+    margin: 0 0 8px;
     padding-left: 22px;
     color: var(--muted);
     font-size: 0.92rem;
 }
 
 .calculator-explanation li {
-    margin-bottom: 6px;
+    margin-bottom: 4px;
 }
 
 .calculator-explanation a {
