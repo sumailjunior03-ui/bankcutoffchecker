@@ -125,9 +125,19 @@
     xhr.send();
   }
 
+  // ── Initialize ────────────────────────────────────────────────────
+  // Safety: if DOM already loaded, run immediately. Otherwise wait for DOMContentLoaded.
+
+  function init() {
+    loadForbiddenThenRender();
+  }
+
   window.renderRelatedTools = renderRelatedTools;
 
-  document.addEventListener("DOMContentLoaded", function () {
-    loadForbiddenThenRender();
-  });
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    // DOM already ready (interactive or complete) — run now
+    init();
+  }
 })();
