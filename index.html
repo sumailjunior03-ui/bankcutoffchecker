@@ -194,8 +194,8 @@
                 <h2>How This Tool Calculates the Result</h2>
                 <p>When you select a bank and transfer type, the tool looks up the cutoff time stored for that specific combination. It compares your submitted time (in ET) against that cutoff, then checks whether the date is a business day.</p>
                 <p><strong>ACH Standard</strong> — uses the bank's daily ACH submission window. Standard ACH batches are processed overnight, so the cutoff is typically mid-to-late afternoon.</p>
-                <p><strong>ACH Same Day</strong> — uses the bank's same-day ACH cutoff, which aligns with Nacha's same-day settlement windows. This cutoff is usually the same or slightly later than the standard ACH cutoff, because same-day ACH has an additional processing window.</p>
-                <p><strong>Wire (Domestic)</strong> — uses the bank's Fedwire cutoff. Fedwire operates in near-real-time during business hours, but each bank sets its own deadline for accepting outgoing wires. Wire cutoffs are often earlier than ACH cutoffs at the same bank because wires require manual settlement steps.</p>
+                <p><strong>ACH Same Day</strong> — uses the bank's same-day ACH cutoff, which aligns with Nacha's same-day settlement windows. This cutoff is typically 15–45 minutes later than the standard ACH cutoff at the same bank, because Nacha provides an additional processing window for same-day entries. For example, Chase's standard ACH cutoff is 4:00 PM ET while its same-day ACH cutoff is 4:45 PM ET, reflecting the later Nacha window.</p>
+                <p><strong>Wire (Domestic)</strong> — uses the bank's Fedwire cutoff. Fedwire operates in near-real-time during business hours, but each bank sets its own deadline for accepting outgoing wires. Wire cutoffs are often earlier than ACH cutoffs at the same bank because wires require manual settlement steps. Note that cutoffs can vary by account type — for example, Chase consumer online wires typically cut off at 4:00 PM ET, while Chase business accounts may allow submission until 6:00 PM ET.</p>
                 <p>After the cutoff comparison, the tool applies business-day logic: weekends (Saturday–Sunday) and all 11 observed U.S. federal holidays are excluded. If the result lands on a non-business day, it moves forward day by day until it reaches a valid business day.</p>
             </section>
 
@@ -212,8 +212,9 @@
             <section class="calculator-explanation">
                 <h2>Cutoff Data Sourcing</h2>
                 <p>The cutoff times in this tool are <strong>generalized estimates</strong>, not guaranteed values from official bank documentation. They reflect commonly cited cutoff windows for consumer and small-business online submissions at major U.S. banks.</p>
-                <p>Banks frequently adjust cutoffs by account type, submission channel (online vs. in-branch vs. API), customer relationship tier, and region. A private-banking customer may have a later cutoff than a standard retail customer at the same bank. An in-branch wire may have a different cutoff than an online wire.</p>
-                <p>If you need a confirmed cutoff, check your bank's website or call their support line directly. This tool is for quick planning estimates, not time-critical decisions.</p>
+                <p>Same-day ACH cutoffs are based on Nacha's same-day settlement window principles, with realistic offsets (typically 15–45 minutes after the standard ACH cutoff at each bank). These offsets are estimates — actual same-day ACH deadlines may differ.</p>
+                <p>Wire cutoffs vary by account type and submission channel. For example, Chase consumer online wires typically cut off at 4:00 PM ET, while business accounts may have a 6:00 PM ET deadline. Wells Fargo lists 3:00 PM PT (6:00 PM ET) for domestic wires. The values in this tool use conservative consumer/SMB deadlines where possible.</p>
+                <p>Banks frequently adjust cutoffs by account type, submission channel (online vs. in-branch vs. API), customer relationship tier, and region. If you need a confirmed cutoff, check your bank's website or call their support line directly. This tool is for quick planning estimates, not time-critical decisions.</p>
             </section>
             <section class="calculator-explanation">
                 <h2>Limitations</h2>

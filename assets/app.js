@@ -21,13 +21,13 @@
   // - If user is unsure, the recommendation is to submit earlier. (No advice; just a caution.)
   const CUTOFFS = {
     chase: { ach_standard: "16:00", ach_sameday: "16:45", wire: "16:00" },
-    boa: { ach_standard: "17:00", ach_sameday: "17:00", wire: "17:00" },
-    wells: { ach_standard: "17:00", ach_sameday: "17:00", wire: "17:00" },
-    citi: { ach_standard: "18:00", ach_sameday: "18:00", wire: "18:00" },
-    usbank: { ach_standard: "18:00", ach_sameday: "18:00", wire: "17:00" },
-    pnc: { ach_standard: "18:00", ach_sameday: "18:00", wire: "17:00" },
-    capitalone: { ach_standard: "17:00", ach_sameday: "17:00", wire: "16:00" },
-    tdus: { ach_standard: "17:00", ach_sameday: "17:00", wire: "16:30" },
+    boa: { ach_standard: "17:00", ach_sameday: "17:45", wire: "17:00" },
+    wells: { ach_standard: "17:00", ach_sameday: "17:45", wire: "18:00" },
+    citi: { ach_standard: "18:00", ach_sameday: "18:45", wire: "18:00" },
+    usbank: { ach_standard: "18:00", ach_sameday: "18:30", wire: "17:00" },
+    pnc: { ach_standard: "18:00", ach_sameday: "18:30", wire: "17:00" },
+    capitalone: { ach_standard: "17:00", ach_sameday: "17:30", wire: "16:00" },
+    tdus: { ach_standard: "17:00", ach_sameday: "17:15", wire: "16:30" },
     truist: { ach_standard: "19:00", ach_sameday: "19:00", wire: "17:00" },
     ally: { ach_standard: "19:00", ach_sameday: "19:00", wire: "16:00" }
   };
