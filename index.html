@@ -167,47 +167,36 @@
 
             <section class="calculator-explanation">
                 <h2>What This Calculator Does</h2>
-                <p>The Bank Cutoff Checker estimates whether a financial transaction will process the same business day or roll to the next business day based on bank cutoff times.</p>
-                <p>Most banks and financial institutions have daily cutoff times for processing transactions such as wire transfers, ACH transfers, and payroll submissions.</p>
-                <p>If a transaction is submitted before the cutoff time, it is usually processed the same business day. If it is submitted after the cutoff time, the transaction typically moves to the next business day.</p>
-                <p>This calculator helps estimate the expected processing timing based on the selected bank and the transaction submission time.</p>
+                <p>You pick a bank and transfer type, enter the date and time you plan to submit, and the tool tells you whether your transaction would likely process that same business day or roll to the next one. Every answer is based on that specific bank's cutoff time for that specific transfer type — not a one-size-fits-all rule.</p>
+                <p>ACH transfers and wire transfers have different cutoffs at the same bank. A standard ACH submission to Chase has a 4:00 PM ET cutoff, while a domestic wire at Chase also cuts off at 4:00 PM ET. At Bank of America, the ACH standard cutoff is 5:00 PM ET but the wire cutoff is also 5:00 PM ET. These differences matter when you're deciding how to send a payment.</p>
+                <p>The tool also checks whether the resulting processing date falls on a weekend or a U.S. federal holiday. If it does, the date moves forward to the next business day.</p>
             </section>
 
             <section class="calculator-explanation">
-                <h2>Example Bank Cutoff Calculation</h2>
+                <h2>Example: Chase ACH Standard on a Friday</h2>
+                <p>You're submitting a standard ACH payment through Chase. The cutoff for Chase ACH Standard is <strong>4:00 PM ET</strong>.</p>
                 <ul>
-                    <li><strong>Bank cutoff time:</strong> 5:00 PM ET</li>
-                    <li><strong>Transaction submitted:</strong> 4:30 PM ET</li>
+                    <li><strong>Submitted at 3:30 PM ET</strong> — before the cutoff, on a business day. <em>Result: likely processes today (Friday).</em></li>
+                    <li><strong>Submitted at 4:15 PM ET</strong> — after the cutoff. <em>Result: rolls to next business day (Monday, assuming no holiday).</em></li>
+                    <li><strong>Submitted at 3:30 PM ET on a Saturday</strong> — before the cutoff, but not a business day. <em>Result: rolls to next business day (Monday).</em></li>
                 </ul>
-                <p>Because the transaction was submitted <em>before</em> the cutoff time, it may be processed the same business day.</p>
-                <ul>
-                    <li><strong>Bank cutoff time:</strong> 5:00 PM ET</li>
-                    <li><strong>Transaction submitted:</strong> 6:15 PM ET</li>
-                </ul>
-                <p>Because the transaction was submitted <em>after</em> the cutoff time, processing would typically occur on the next business day.</p>
+                <p>The cutoff time alone doesn't determine the result — the date also has to be a business day. A submission that beats the cutoff but lands on a weekend or holiday still rolls forward.</p>
             </section>
 
             <section class="calculator-explanation">
-                <h2>Cutoff Time Decision Rule</h2>
-                <p><strong>Processing Result = Transaction Time compared to Bank Cutoff Time</strong></p>
-                <ul>
-                    <li>If the transaction time is <strong>before</strong> the cutoff time, it may process the same business day.</li>
-                    <li>If the transaction time is <strong>after</strong> the cutoff time, processing typically occurs on the next business day.</li>
-                </ul>
-                <p>If the resulting processing date falls on a weekend or U.S. federal holiday, the calculator moves the date forward to the next available business day.</p>
+                <h2>How the Cutoff Decision Works</h2>
+                <p>Two conditions must both be true for same-day processing: the submission time must be <strong>before</strong> the bank's cutoff for that transfer type, <strong>and</strong> the submission date must be a business day.</p>
+                <p>If either condition fails — you missed the cutoff, or it's a weekend/holiday — the transaction rolls to the next business day after the cutoff. The tool finds that next business day by skipping weekends and all 11 observed U.S. federal holidays.</p>
+                <p><strong>At exactly the cutoff time, the transaction is treated as after the cutoff.</strong> For example, if Chase's ACH Standard cutoff is 4:00 PM ET and you submit at 4:00 PM exactly, the tool treats that as missed — submit at least one minute before the cutoff to be safe.</p>
             </section>
 
             <section class="calculator-explanation">
-                <h2>Calculation Methodology</h2>
-                <p>This calculator estimates transaction processing timing using the following steps:</p>
-                <ol>
-                    <li>The calculator identifies the cutoff time associated with the selected bank and transfer type.</li>
-                    <li>The transaction submission time is compared against that cutoff time in Eastern Time (ET).</li>
-                    <li>If the submission occurs before the cutoff, the transaction may process the same business day.</li>
-                    <li>If the submission occurs after the cutoff, the transaction typically moves to the next business day.</li>
-                    <li>Weekend days and all 11 U.S. federal holidays (observed) are skipped when determining the next business day.</li>
-                </ol>
-                <p>This tool provides an estimate for planning purposes. Actual processing times may vary depending on bank policies and settlement systems.</p>
+                <h2>How This Tool Calculates the Result</h2>
+                <p>When you select a bank and transfer type, the tool looks up the cutoff time stored for that specific combination. It compares your submitted time (in ET) against that cutoff, then checks whether the date is a business day.</p>
+                <p><strong>ACH Standard</strong> — uses the bank's daily ACH submission window. Standard ACH batches are processed overnight, so the cutoff is typically mid-to-late afternoon.</p>
+                <p><strong>ACH Same Day</strong> — uses the bank's same-day ACH cutoff, which aligns with Nacha's same-day settlement windows. This cutoff is usually the same or slightly later than the standard ACH cutoff, because same-day ACH has an additional processing window.</p>
+                <p><strong>Wire (Domestic)</strong> — uses the bank's Fedwire cutoff. Fedwire operates in near-real-time during business hours, but each bank sets its own deadline for accepting outgoing wires. Wire cutoffs are often earlier than ACH cutoffs at the same bank because wires require manual settlement steps.</p>
+                <p>After the cutoff comparison, the tool applies business-day logic: weekends (Saturday–Sunday) and all 11 observed U.S. federal holidays are excluded. If the result lands on a non-business day, it moves forward day by day until it reaches a valid business day.</p>
             </section>
 
             <section class="calculator-explanation">
@@ -220,6 +209,23 @@
                     <li><strong>Holiday planning</strong> — planning transaction timing around weekends and federal holidays</li>
                 </ul>
             </section>
+            <section class="calculator-explanation">
+                <h2>Cutoff Data Sourcing</h2>
+                <p>The cutoff times in this tool are <strong>generalized estimates</strong>, not guaranteed values from official bank documentation. They reflect commonly cited cutoff windows for consumer and small-business online submissions at major U.S. banks.</p>
+                <p>Banks frequently adjust cutoffs by account type, submission channel (online vs. in-branch vs. API), customer relationship tier, and region. A private-banking customer may have a later cutoff than a standard retail customer at the same bank. An in-branch wire may have a different cutoff than an online wire.</p>
+                <p>If you need a confirmed cutoff, check your bank's website or call their support line directly. This tool is for quick planning estimates, not time-critical decisions.</p>
+            </section>
+            <section class="calculator-explanation">
+                <h2>Limitations</h2>
+                <ul>
+                    <li>Cutoff times are estimates and may not reflect your bank's current policy</li>
+                    <li>Same-day processing does not mean immediate settlement — ACH and wire settlements follow their own network schedules</li>
+                    <li>Federal holidays affect settlement even if your bank is open (e.g., some banks open on Veterans Day but ACH does not settle)</li>
+                    <li>International wires, internal transfers between accounts at the same bank, and real-time payment networks (like Zelle or RTP) are not covered by this tool</li>
+                    <li>The tool does not account for grace periods, batch processing delays, or bank-specific exceptions</li>
+                </ul>
+                <p>Use this tool for planning. Verify deadlines directly with your bank when timing matters.</p>
+            </section>
 
             <section class="calculator-explanation">
                 <h2>Frequently Asked Questions</h2>
@@ -231,7 +237,7 @@
                 <p>v1 includes 10 major U.S. banks: Chase, Bank of America, Wells Fargo, Citi, U.S. Bank, PNC, Capital One, TD Bank (US), Truist, and Ally.</p>
 
                 <h3>Are these cutoff times official?</h3>
-                <p>No. This tool uses common industry cutoff windows for quick planning estimates. Banks may vary cutoff times by channel, product, or account type. Always verify critical deadlines directly with your bank.</p>
+                <p>No. The cutoff times in this tool are generalized estimates for online consumer/SMB submissions, not values sourced from official bank documentation. Banks may set different cutoffs by account type, channel (online vs. in-branch), product, or customer relationship tier. Always verify critical deadlines directly with your bank.</p>
 
                 <h3>What counts as a business day?</h3>
                 <p>A business day is Monday through Friday, excluding all 11 U.S. federal holidays (observed). If a fixed-date holiday falls on a weekend, the observed day (nearest weekday) is used.</p>
