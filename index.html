@@ -117,7 +117,7 @@
                 </section>
 
                 <aside class="card">
-                    <h2>What this tool is for</h2>
+                    <h2>Will This Transfer Still Go Out Today?</h2>
                     <p>
                         People often ask "Did I miss the cutoff?" right before
                         moving money. This tool gives a deterministic answer
@@ -159,7 +159,7 @@
             <div id="adBottom" class="ad-slot is-off" aria-label="Advertisement"></div>
 
             <section class="calculator-explanation">
-                <h2>What This Calculator Does</h2>
+                <h2>Why Cutoff Time Changes the Processing Day</h2>
                 <p>You pick a bank and transfer type, enter the date and time you plan to submit, and the tool tells you whether your transaction would likely process that same business day or roll to the next one. Every answer is based on that specific bank's cutoff time for that specific transfer type — not a one-size-fits-all rule.</p>
                 <p>ACH transfers and wire transfers have different cutoffs at the same bank. A standard ACH submission to Chase has a 4:00 PM ET cutoff, while a domestic wire at Chase also cuts off at 4:00 PM ET. At Bank of America, the ACH standard cutoff is 5:00 PM ET but the wire cutoff is also 5:00 PM ET. These differences matter when you're deciding how to send a payment.</p>
                 <p>The tool also checks whether the resulting processing date falls on a weekend or a U.S. federal holiday. If it does, the date moves forward to the next business day.</p>
@@ -177,14 +177,14 @@
             </section>
 
             <section class="calculator-explanation">
-                <h2>How the Cutoff Decision Works</h2>
+                <h2>How the Clock Decides: Same Day or Next</h2>
                 <p>Two conditions must both be true for same-day processing: the submission time must be <strong>before</strong> the bank's cutoff for that transfer type, <strong>and</strong> the submission date must be a business day.</p>
                 <p>If either condition fails — you missed the cutoff, or it's a weekend/holiday — the transaction rolls to the next business day after the cutoff. The tool finds that next business day by skipping weekends and all 11 observed U.S. federal holidays.</p>
                 <p><strong>At exactly the cutoff time, the transaction is treated as after the cutoff.</strong> For example, if Chase's ACH Standard cutoff is 4:00 PM ET and you submit at 4:00 PM exactly, the tool treats that as missed — submit at least one minute before the cutoff to be safe.</p>
             </section>
 
             <section class="calculator-explanation">
-                <h2>How This Tool Calculates the Result</h2>
+                <h2>What Happens After You Miss the Window</h2>
                 <p>When you select a bank and transfer type, the tool looks up the cutoff time stored for that specific combination. It compares your submitted time (in ET) against that cutoff, then checks whether the date is a business day.</p>
                 <p><strong>ACH Standard</strong> — uses the bank's daily ACH submission window. Standard ACH batches are processed overnight, so the cutoff is typically mid-to-late afternoon.</p>
                 <p><strong>ACH Same Day</strong> — uses the bank's same-day ACH cutoff, which aligns with Nacha's same-day settlement windows. This cutoff is typically 15–45 minutes later than the standard ACH cutoff at the same bank, because Nacha provides an additional processing window for same-day entries. For example, Chase's standard ACH cutoff is 4:00 PM ET while its same-day ACH cutoff is 4:45 PM ET, reflecting the later Nacha window.</p>
@@ -193,7 +193,7 @@
             </section>
 
             <section class="calculator-explanation">
-                <h2>Common Bank Cutoff Scenarios</h2>
+                <h2>When Your Transfer Did Not Process Today</h2>
                 <ul>
                     <li><strong>Wire transfers</strong> — verifying whether a same-day wire will settle before the bank's cutoff</li>
                     <li><strong>ACH payments</strong> — determining if an ACH payment will post before a deadline</li>
