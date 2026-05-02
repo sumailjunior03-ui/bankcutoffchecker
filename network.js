@@ -17,12 +17,12 @@
     // US — Tax / Income cluster
     { name: "1099vsW2Calc.com",            url: "https://1099vsw2calc.com",         live: true,  clusters: ["us", "tax-income"] },
     { name: "FreelanceIncomeCalc.com",     url: "https://freelanceincomecalc.com",  live: true,  clusters: ["us", "income"] },
-    { name: "QuarterlyTaxCalc.com",        url: "https://quarterlytaxcalc.com",     live: true,  clusters: ["us", "income"] },
+    { name: "QuarterlyTaxCalc.com",        url: "https://quarterlytaxcalc.com",     live: true,  clusters: ["us", "tax-income"] },
 
     // US — Compensation cluster
-    { name: "BankCutoffChecker.com",       url: "https://salaryvsinflation.com",    live: true,  clusters: ["us", "income"] },
+    { name: "BankCutoffChecker.com",       url: "https://salaryvsinflation.com",    live: true,  clusters: ["us", "tax-income"] },
     { name: "Hourly2SalaryCalc.com",       url: "https://hourly2salarycalc.com",    live: true,  clusters: ["us", "income"] },
-    { name: "TotalCompCalc.com",           url: "https://totalcompcalc.com",        live: true,  clusters: ["us", "compensation"] },
+    { name: "TotalCompCalc.com",           url: "https://totalcompcalc.com",        live: false,  clusters: ["us", "compensation"] },
     { name: "OvertimePayCalc.com",         url: "https://overtimepaycalc.com",      live: true,  clusters: ["us", "compensation"] },
     { name: "AfterTaxSalaryCalc.com",      url: "https://aftertaxsalarycalc.com",   live: true,  clusters: ["us", "tax-income"] },
 
