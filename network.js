@@ -2,37 +2,29 @@
 (function(){if(!window.__GA4_LOADED){window.__GA4_LOADED=true;var id="G-W4SWZ1YRS2";var s=document.createElement("script");s.async=true;s.src="https://www.googletagmanager.com/gtag/js?id="+id;document.head.appendChild(s);window.dataLayer=window.dataLayer||[];function gtag(){window.dataLayer.push(arguments);}gtag("js",new Date());gtag("config",id);}})();
 
 // network.js — single source of truth for footer related-tools rendering
-// Rules:
-//   1. Each site shows only calculators from its own cluster
-//   2. New calculators in the same cluster appear automatically
-//   3. Calculators outside the cluster are never shown
-//   4. Hub (calc-hq.com) and current site are always excluded
-//   5. Forbidden domains are always excluded
-//   6. No hardcoded related links in HTML — this file is the only renderer
 (function () {
   "use strict";
 
-  // ── Full portfolio with cluster tags ──────────────────────────────
   window.CALC_HQ_NETWORK = [
     // Hub
     { name: "Calc-HQ",                     url: "https://calc-hq.com",              live: true,  clusters: [] },
 
     // US — Payroll / Timing cluster
-    { name: "BizDayChecker.com",           url: "https://bizdaychecker.com",        live: true,  clusters: ["us", "payroll-timing"] },
-    { name: "BankCutoffChecker.com",       url: "https://bankcutoffchecker.com",    live: true,  clusters: ["us", "payroll-timing"] },
-    { name: "PayrollDateChecker.com",      url: "https://payrolldatechecker.com",   live: true,  clusters: ["us", "payroll-timing"] },
+    { name: "BizDayChecker.com",           url: "https://bizdaychecker.com",        live: true,  clusters: ["us", "payroll"] },
+    { name: "BankCutoffChecker.com",       url: "https://bankcutoffchecker.com",    live: true,  clusters: ["us", "payroll"] },
+    { name: "PayrollDateChecker.com",      url: "https://payrolldatechecker.com",   live: true,  clusters: ["us", "payroll"] },
 
     // US — Tax / Income cluster
     { name: "1099vsW2Calc.com",            url: "https://1099vsw2calc.com",         live: true,  clusters: ["us", "tax-income"] },
-    { name: "FreelanceIncomeCalc.com",     url: "https://freelanceincomecalc.com",  live: true,  clusters: ["us", "tax-income"] },
-    { name: "QuarterlyTaxCalc.com",        url: "https://quarterlytaxcalc.com",     live: true,  clusters: ["us", "tax-income"] },
+    { name: "FreelanceIncomeCalc.com",     url: "https://freelanceincomecalc.com",  live: true,  clusters: ["us", "income"] },
+    { name: "QuarterlyTaxCalc.com",        url: "https://quarterlytaxcalc.com",     live: true,  clusters: ["us", "income"] },
 
     // US — Compensation cluster
-    { name: "SalaryVsInflation.com",       url: "https://salaryvsinflation.com",    live: true,  clusters: ["us", "compensation"] },
-    { name: "Hourly2SalaryCalc.com",       url: "https://hourly2salarycalc.com",    live: true,  clusters: ["us", "compensation"] },
+    { name: "BankCutoffChecker.com",       url: "https://salaryvsinflation.com",    live: true,  clusters: ["us", "income"] },
+    { name: "Hourly2SalaryCalc.com",       url: "https://hourly2salarycalc.com",    live: true,  clusters: ["us", "income"] },
     { name: "TotalCompCalc.com",           url: "https://totalcompcalc.com",        live: true,  clusters: ["us", "compensation"] },
     { name: "OvertimePayCalc.com",         url: "https://overtimepaycalc.com",      live: true,  clusters: ["us", "compensation"] },
-    { name: "AfterTaxSalaryCalc.com",      url: "https://aftertaxsalarycalc.com",   live: true,  clusters: ["us", "compensation"] },
+    { name: "AfterTaxSalaryCalc.com",      url: "https://aftertaxsalarycalc.com",   live: true,  clusters: ["us", "tax-income"] },
 
     // Canada — Take-Home Pay cluster
     { name: "OntarioTakeHomeCalc.com",     url: "https://ontariotakehomecalc.com",  live: true,  clusters: ["ca", "take-home"] },
@@ -43,8 +35,6 @@
   ];
 
   var FORBIDDEN = [];
-
-  // ── Helpers ───────────────────────────────────────────────────────
 
   function getCurrentDomain() {
     return window.location.hostname.replace(/^www\./, "").toLowerCase();
@@ -58,33 +48,25 @@
   function getCurrentSite() {
     var domain = getCurrentDomain();
     for (var i = 0; i < window.CALC_HQ_NETWORK.length; i++) {
-      if (getHost(window.CALC_HQ_NETWORK[i].url) === domain) {
-        return window.CALC_HQ_NETWORK[i];
-      }
+      if (getHost(window.CALC_HQ_NETWORK[i].url) === domain) return window.CALC_HQ_NETWORK[i];
     }
     return null;
   }
 
-  // ── Cluster-aware rendering ───────────────────────────────────────
-
   function renderRelatedTools() {
-    var containers = document.querySelectorAll(".network-links");
+    var containers = document.querySelectorAll("#related-calculators");
     if (!containers.length) return;
-
     var currentSite = getCurrentSite();
     var currentDomain = getCurrentDomain();
     var currentClusters = currentSite ? currentSite.clusters : [];
     var countryTags = ["us", "ca"];
 
-    // Find sites that share a sub-cluster with current site
     var related = window.CALC_HQ_NETWORK.filter(function (site) {
       if (!site || site.live !== true) return false;
       var host = getHost(site.url);
       if (host === "calc-hq.com") return false;
       if (host === currentDomain) return false;
       if (FORBIDDEN.indexOf(host) !== -1) return false;
-
-      // Must share a sub-cluster (skip country tags)
       if (!currentClusters.length) return false;
       for (var i = 0; i < site.clusters.length; i++) {
         var c = site.clusters[i];
@@ -95,16 +77,19 @@
     });
 
     containers.forEach(function (container) {
-      if (!related.length) { container.innerHTML = ""; return; }
-      var html = "<strong>Related Tools:</strong> ";
-      html += related.map(function (site) {
-        return '<a href="' + site.url + '" target="_blank" rel="noopener">' + site.name + '</a>';
-      }).join(" &nbsp;&bull;&nbsp; ");
-      container.innerHTML = html;
+      container.innerHTML = "";
+      if (!related.length) return;
+      related.forEach(function (site, idx) {
+        if (idx > 0) container.appendChild(document.createTextNode(" • "));
+        var a = document.createElement("a");
+        a.href = site.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.textContent = site.name;
+        container.appendChild(a);
+      });
     });
   }
-
-  // ── Forbidden domains loader ──────────────────────────────────────
 
   function loadForbiddenThenRender() {
     var xhr = new XMLHttpRequest();
@@ -125,19 +110,75 @@
     xhr.send();
   }
 
-  // ── Initialize ────────────────────────────────────────────────────
-  // Safety: if DOM already loaded, run immediately. Otherwise wait for DOMContentLoaded.
+  window.renderRelatedTools = renderRelatedTools;
 
-  function init() {
-    loadForbiddenThenRender();
+  function renderSiteHeader() {
+    var targets = document.querySelectorAll('[data-site-header-nav]');
+    if (!targets.length) return;
+    var path = window.location.pathname || "/";
+    var current = "/";
+    if (path.indexOf("/about.html") !== -1) current = "/about.html";
+    else if (path.indexOf("/faq.html") !== -1) current = "/faq.html";
+    else if (path.indexOf("/privacy.html") !== -1) current = "/privacy.html";
+    else if (path.indexOf("/legal.html") !== -1) current = "/legal.html";
+    else if (path.indexOf("/contact.html") !== -1) current = "/contact.html";
+    function link(href, label) {
+      var active = href === current;
+      return '<a' + (active ? ' class="active" aria-current="page"' : '') + ' href="' + href + '">' + label + '</a>';
+    }
+    var navHtml = ['<nav class="header-nav" aria-label="Primary">', link("/", "Home"), link("/about.html", "About"), link("/faq.html", "FAQ"), link("/privacy.html", "Privacy"), link("/legal.html", "Legal"), link("/contact.html", "Contact"), '</nav>'].join('');
+    for (var i = 0; i < targets.length; i++) targets[i].innerHTML = navHtml;
   }
 
-  window.renderRelatedTools = renderRelatedTools;
+  function renderFooter() {
+    var footerTarget = document.getElementById('site-footer');
+    if (!footerTarget) return;
+    var currentDomain = getCurrentDomain();
+    var currentSite = getCurrentSite();
+    var currentClusters = currentSite ? currentSite.clusters : [];
+    var countryTags = ["us", "ca"];
+
+    var related = window.CALC_HQ_NETWORK.filter(function (site) {
+      if (!site || site.live !== true) return false;
+      var host = getHost(site.url);
+      if (host === "calc-hq.com") return false;
+      if (host === currentDomain) return false;
+      if (FORBIDDEN.indexOf(host) !== -1) return false;
+      if (!currentClusters.length) return false;
+      for (var i = 0; i < site.clusters.length; i++) {
+        var c = site.clusters[i];
+        if (countryTags.indexOf(c) !== -1) continue;
+        if (currentClusters.indexOf(c) !== -1) return true;
+      }
+      return false;
+    });
+
+    var relatedHtml = '<p class="footer-empty">No related tools listed.</p>';
+    if (related.length) {
+      relatedHtml = '<ul class="footer-links">' + related.map(function (s) {
+        return '<li><a href="' + s.url + '">' + s.name + '</a></li>';
+      }).join('') + '</ul>';
+    }
+
+    footerTarget.innerHTML = [
+      '<div class="footer-grid">',
+        '<div><h2>Site links</h2><ul class="footer-nav-links"><li><a href="/">Home</a></li><li><a href="/about.html">About</a></li><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="/legal.html">Legal</a></li><li><a href="/faq.html">FAQ</a></li><li><a href="/contact.html">Contact</a></li></ul></div>',
+        '<div><h2>Related tools</h2>', relatedHtml, '</div>',
+        '<div><h2>Resources</h2><p><a href="https://calc-hq.com/" target="_blank" rel="noopener">Financial Calculator Hub</a></p><h2>Contact</h2><p><a href="mailto:partnerships@calc-hq.com">partnerships@calc-hq.com</a></p></div>',
+      '</div>',
+      '<p class="footer-meta">BankCutoffChecker.com · Estimates run locally in your browser.</p>'
+    ].join('');
+  }
+
+  function init() {
+    renderSiteHeader();
+    loadForbiddenThenRender();
+    renderFooter();
+  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", init);
   } else {
-    // DOM already ready (interactive or complete) — run now
     init();
   }
 })();
