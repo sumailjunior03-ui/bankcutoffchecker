@@ -61,33 +61,48 @@
             <p>
                 All cutoffs are evaluated in
                 <strong>Eastern Time (ET)</strong>. Enter your time as ET.
-            </p>
+                If you’re submitting from a different time zone, convert
+                your local time to ET before entering it &mdash; the tool
+                does not auto-detect or convert your device’s time zone.
+            </p> <!-- PATCHED -->
 
             <h3>What counts as a business day?</h3>
             <p>
                 Business days exclude weekends and
                 <strong>US federal holidays (observed)</strong>.
-            </p>
+                When a fixed-date holiday falls on a weekend, the tool uses
+                the observed date &mdash; the nearest weekday &mdash; rather
+                than the calendar date. This matches how the Federal Reserve
+                and ACH network handle holiday schedules in practice.
+            </p> <!-- PATCHED -->
 
             <h3>Which banks are included?</h3>
             <p>
                 v1 includes 10 major U.S. banks: Chase, Bank of America,
                 Wells Fargo, Citi, U.S. Bank, PNC, Capital One, TD Bank
-                (US), Truist, Ally.
-            </p>
+                (US), Truist, and Ally. These cover the most commonly used
+                consumer and small-business online banking platforms. Additional
+                banks may be added in future versions.
+            </p> <!-- PATCHED -->
 
             <h3>Is this "official" for my account?</h3>
             <p>
-                No. Banks can vary cutoffs by channel, product, and customer
-                type. This tool uses common cutoff windows intended for
-                quick planning. If you need certainty, submit earlier.
-            </p>
+                No. The cutoff times in this tool are generalized estimates
+                for online consumer and SMB submissions &mdash; not values
+                sourced from official bank documentation. Banks set different
+                cutoffs by account type, submission channel (online vs.
+                in-branch), and customer relationship tier. If timing is
+                critical, verify the deadline directly with your bank or
+                submit well ahead of the estimated cutoff.
+            </p> <!-- PATCHED -->
 
             <h3>Do you store my input?</h3>
             <p>
-                No. The calculator runs entirely in your browser. No
-                accounts. No stored user data.
-            </p>
+                No. The calculator runs entirely in your browser. Your
+                selected bank, transfer type, date, and time are used
+                locally to compute the result and are never sent to any
+                server. No account is required and no usage data is stored.
+            </p> <!-- PATCHED -->
         </section>
 
         <div id="adBottom" class="ad-slot is-off" aria-label="Advertisement"></div>
